@@ -11,8 +11,8 @@
 unsigned int phi_mode;
 module_param(phi_mode, int, 0644);
 MODULE_PARM_DESC(phi_mode, "phi access mode: 0 - default, slow single word accesses;"
-                                           " 1 - faster phi clock;"
-                                           " 2 - fastest mode, use write-combining");
+					   " 1 - faster phi clock;"
+					   " 2 - fastest mode, use write-combining");
 
 
 /* phi config register values: chip_select mask, ready mask, strobe time, cycle time */
@@ -160,7 +160,7 @@ void saa716x_ff_phi_config(struct saa716x_dev *saa716x)
 }
 
 void saa716x_ff_phi_write(struct saa716x_dev *saa716x,
-			  u32 address, const u8 * data, int length)
+			  u32 address, const u8 *data, int length)
 {
 	struct sti7109_dev *sti7109 = saa716x->priv;
 	int i;
@@ -182,7 +182,7 @@ void saa716x_ff_phi_write(struct saa716x_dev *saa716x,
 }
 
 void saa716x_ff_phi_read(struct saa716x_dev *saa716x,
-			 u32 address, u8 * data, int length)
+			 u32 address, u8 *data, int length)
 {
 	struct sti7109_dev *sti7109 = saa716x->priv;
 	int i;
@@ -204,7 +204,7 @@ void saa716x_ff_phi_read(struct saa716x_dev *saa716x,
 }
 
 void saa716x_ff_phi_write_fifo(struct saa716x_dev *saa716x,
-			       const u8 * data, int length)
+			       const u8 *data, int length)
 {
 	struct sti7109_dev *sti7109 = saa716x->priv;
 	int i;

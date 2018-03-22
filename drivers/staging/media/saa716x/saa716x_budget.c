@@ -52,7 +52,7 @@ static int saa716x_budget_pci_probe(struct pci_dev *pdev, const struct pci_devic
 	struct saa716x_dev *saa716x;
 	int err = 0;
 
-	saa716x = kzalloc(sizeof (struct saa716x_dev), GFP_KERNEL);
+	saa716x = kzalloc(sizeof(struct saa716x_dev), GFP_KERNEL);
 	if (saa716x == NULL) {
 		printk(KERN_ERR "saa716x_budget_pci_probe ERROR: out of memory\n");
 		err = -ENOMEM;
@@ -321,7 +321,7 @@ static int vp1028_dvbs_set_voltage(struct dvb_frontend *fe, enum fe_sec_voltage 
 		dprintk(SAA716x_ERROR, 1, "Frontend (dummy) POWERDOWN");
 		break;
 	default:
-		dprintk(SAA716x_ERROR, 1, "Invalid = (%d)", (u32 ) voltage);
+		dprintk(SAA716x_ERROR, 1, "Invalid = (%d)", (u32) voltage);
 		return -EINVAL;
 	}
 

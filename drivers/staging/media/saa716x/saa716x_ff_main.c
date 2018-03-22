@@ -296,7 +296,7 @@ static int saa716x_usercopy(struct dvb_device *dvbdev,
 			parg = sbuf;
 		} else {
 			/* too big to allocate from stack */
-			mbuf = kmalloc(_IOC_SIZE(cmd),GFP_KERNEL);
+			mbuf = kmalloc(_IOC_SIZE(cmd), GFP_KERNEL);
 			if (NULL == mbuf)
 				return -ENOMEM;
 			parg = mbuf;
@@ -465,7 +465,7 @@ static long dvb_audio_ioctl(struct file *file,
 	if (!dvbdev)
 		return -ENODEV;
 
-	return saa716x_usercopy (dvbdev, cmd, arg, do_dvb_audio_ioctl);
+	return saa716x_usercopy(dvbdev, cmd, arg, do_dvb_audio_ioctl);
 }
 
 static struct file_operations dvb_audio_fops = {
@@ -521,7 +521,7 @@ static ssize_t ringbuffer_write_user(struct dvb_ringbuffer *rbuf, const u8 __use
 	split = (rbuf->pwrite + len > rbuf->size) ? rbuf->size - rbuf->pwrite : 0;
 
 	if (split > 0) {
-        	if (copy_from_user(rbuf->data+rbuf->pwrite, buf, split)) {
+		if (copy_from_user(rbuf->data+rbuf->pwrite, buf, split)) {
 			return -EFAULT;
 		}
 		buf += split;
@@ -640,7 +640,7 @@ static void video_vip_worker(unsigned long data)
 	} while (write_index != vip_entry->read_index);
 }
 
-static int video_vip_get_stream_params(struct vip_stream_params * params,
+static int video_vip_get_stream_params(struct vip_stream_params *params,
 				       u32 mode)
 {
 	switch (mode)
@@ -690,7 +690,7 @@ static int video_vip_get_stream_params(struct vip_stream_params * params,
 }
 
 static ssize_t video_vip_read(struct sti7109_dev *sti7109,
-			      struct vip_stream_params * stream_params,
+			      struct vip_stream_params *stream_params,
 			      char __user *buf, size_t count)
 {
 	struct saa716x_dev *saa716x = sti7109->dev;
@@ -841,7 +841,7 @@ static ssize_t dvb_video_write(struct file *file, const char __user *buf,
 		SAA716x_EPWR(PHI_1, FPGA_ADDR_FIFO_CTRL, FPGA_FIFO_CTRL_IE | FPGA_FIFO_CTRL_RUN);
 	}
 	else if ((sti7109->tsout_stat == TSOUT_STAT_WAIT) &&
-	         (ringbuffer_avail > TSOUT_LEVEL_HIGH)) {
+		 (ringbuffer_avail > TSOUT_LEVEL_HIGH)) {
 		sti7109->tsout_stat = TSOUT_STAT_RUN;
 		queue_work(sti7109->fifo_workq, &sti7109->fifo_work);
 	}
@@ -902,7 +902,7 @@ static int do_dvb_video_ioctl(struct dvb_device *dvbdev,
 		spin_lock(&sti7109->tsout.lock);
 		SAA716x_EPWR(PHI_1, FPGA_ADDR_FIFO_CTRL, 0);
 		sti7109->tsout.pread = sti7109->tsout.pwrite = 0;//dvb_ringbuffer_reset(&sti7109->tsout);
-        	sti7109->tsout_stat = TSOUT_STAT_FILL;
+		sti7109->tsout_stat = TSOUT_STAT_FILL;
 		spin_unlock(&sti7109->tsout.lock);
 		wake_up(&sti7109->tsout.queue);
 		break;
@@ -936,7 +936,7 @@ static long dvb_video_ioctl(struct file *file,
 	if (!dvbdev)
 		return -ENODEV;
 
-	return saa716x_usercopy (dvbdev, cmd, arg, do_dvb_video_ioctl);
+	return saa716x_usercopy(dvbdev, cmd, arg, do_dvb_video_ioctl);
 }
 
 static struct file_operations dvb_video_fops = {
@@ -1013,7 +1013,7 @@ static int saa716x_ff_pci_probe(struct pci_dev *pdev, const struct pci_device_id
 	u32 value;
 	unsigned long timeout;
 
-	saa716x = kzalloc(sizeof (struct saa716x_dev), GFP_KERNEL);
+	saa716x = kzalloc(sizeof(struct saa716x_dev), GFP_KERNEL);
 	if (saa716x == NULL) {
 		printk(KERN_ERR "saa716x_budget_pci_probe ERROR: out of memory\n");
 		err = -ENOMEM;
@@ -1818,7 +1818,7 @@ static struct saa716x_config saa716x_s26400_config = {
 			/* Adapter 0 */
 			.ts_port = 2,
 			.worker = demux_worker
-		},{
+		}, {
 			/* Adapter 1 */
 			.ts_port = 3,
 			.worker = demux_worker

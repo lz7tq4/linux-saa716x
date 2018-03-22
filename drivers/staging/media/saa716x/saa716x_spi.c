@@ -273,7 +273,7 @@ int saa716x_spi_init(struct saa716x_dev *saa716x)
 	dprintk(SAA716x_DEBUG, 1, "Initializing SAA%02x I2C Core",
 		saa716x->pdev->device);
 
-	master = spi_alloc_master(&pdev->dev, sizeof (struct saa716x_spi_state));
+	master = spi_alloc_master(&pdev->dev, sizeof(struct saa716x_spi_state));
 	if (master == NULL) {
 		dprintk(SAA716x_ERROR, 1, "ERROR: Cannot allocate SPI Master!");
 		return -ENOMEM;
