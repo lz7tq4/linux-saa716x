@@ -105,14 +105,12 @@ static int saa716x_hybrid_pci_probe(struct pci_dev *pdev, const struct pci_devic
 	saa716x_gpio_init(saa716x);
 
 	err = saa716x_dump_eeprom(saa716x);
-	if (err) {
+	if (err)
 		dprintk(SAA716x_ERROR, 1, "SAA716x EEPROM dump failed");
-	}
 
 	err = saa716x_eeprom_data(saa716x);
-	if (err) {
+	if (err)
 		dprintk(SAA716x_ERROR, 1, "SAA716x EEPROM dump failed");
-	}
 
 	/* enable decoders on 7162 */
 	if (pdev->device == SAA7162) {
@@ -229,18 +227,17 @@ static irqreturn_t saa716x_hybrid_pci_irq(int irq, void *dev_id)
 #endif
 
 	if (stat_l) {
-		if (stat_l & MSI_INT_TAGACK_FGPI_0) {
+		if (stat_l & MSI_INT_TAGACK_FGPI_0)
 			tasklet_schedule(&saa716x->fgpi[0].tasklet);
-		}
-		if (stat_l & MSI_INT_TAGACK_FGPI_1) {
+
+		if (stat_l & MSI_INT_TAGACK_FGPI_1)
 			tasklet_schedule(&saa716x->fgpi[1].tasklet);
-		}
-		if (stat_l & MSI_INT_TAGACK_FGPI_2) {
+
+		if (stat_l & MSI_INT_TAGACK_FGPI_2)
 			tasklet_schedule(&saa716x->fgpi[2].tasklet);
-		}
-		if (stat_l & MSI_INT_TAGACK_FGPI_3) {
+
+		if (stat_l & MSI_INT_TAGACK_FGPI_3)
 			tasklet_schedule(&saa716x->fgpi[3].tasklet);
-		}
 	}
 
 	return IRQ_HANDLED;

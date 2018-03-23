@@ -519,16 +519,15 @@ static ssize_t ringbuffer_write_user(struct dvb_ringbuffer *rbuf, const u8 __use
 	split = (rbuf->pwrite + len > rbuf->size) ? rbuf->size - rbuf->pwrite : 0;
 
 	if (split > 0) {
-		if (copy_from_user(rbuf->data+rbuf->pwrite, buf, split)) {
+		if (copy_from_user(rbuf->data+rbuf->pwrite, buf, split))
 			return -EFAULT;
-		}
 		buf += split;
 		todo -= split;
 		rbuf->pwrite = 0;
 	}
-	if (copy_from_user(rbuf->data+rbuf->pwrite, buf, todo)) {
+	if (copy_from_user(rbuf->data+rbuf->pwrite, buf, todo))
 		return -EFAULT;
-	}
+
 	rbuf->pwrite = (rbuf->pwrite + todo) % rbuf->size;
 
 	return len;
@@ -1151,14 +1150,12 @@ static int saa716x_ff_pci_probe(struct pci_dev *pdev, const struct pci_device_id
 	}
 
 	err = saa716x_dump_eeprom(saa716x);
-	if (err) {
+	if (err)
 		dprintk(SAA716x_ERROR, 1, "SAA716x EEPROM dump failed");
-	}
 
 	err = saa716x_eeprom_data(saa716x);
-	if (err) {
+	if (err)
 		dprintk(SAA716x_ERROR, 1, "SAA716x EEPROM dump failed");
-	}
 
 	/* enable FGPI2 and FGPI3 for TS inputs */
 	SAA716x_EPWR(GREG, GREG_VI_CTRL, 0x0689F04);
