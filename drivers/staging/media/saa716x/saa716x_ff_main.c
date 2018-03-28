@@ -317,8 +317,7 @@ static int saa716x_usercopy(struct dvb_device *dvbdev,
 		goto out;
 
 	/*  Copy results into user buffer  */
-	switch (_IOC_DIR(cmd))
-	{
+	switch (_IOC_DIR(cmd)) {
 	case _IOC_READ:
 	case (_IOC_WRITE | _IOC_READ):
 		if (copy_to_user((void __user *)arg, parg, _IOC_SIZE(cmd)))
@@ -367,8 +366,7 @@ static long dvb_osd_ioctl(struct file *file,
 
 		if (copy_to_user((void __user *)arg, &raw_cmd, _IOC_SIZE(cmd)))
 			err = -EFAULT;
-	}
-	else if (cmd == OSD_RAW_DATA) {
+	} else if (cmd == OSD_RAW_DATA) {
 		osd_raw_data_t raw_data;
 
 		err = -EFAULT;
@@ -643,48 +641,47 @@ static void video_vip_worker(unsigned long data)
 static int video_vip_get_stream_params(struct vip_stream_params *params,
 				       u32 mode)
 {
-	switch (mode)
-	{
-		case 4:  /* 1280x720p60 */
-		case 19: /* 1280x720p50 */
-			params->bits		= 16;
-			params->samples		= 1280;
-			params->lines		= 720;
-			params->pitch		= 1280 * 2;
-			params->offset_x	= 32;
-			params->offset_y	= 30;
-			params->stream_flags	= VIP_HD;
-			break;
+	switch (mode) {
+	case 4:  /* 1280x720p60 */
+	case 19: /* 1280x720p50 */
+		params->bits		= 16;
+		params->samples		= 1280;
+		params->lines		= 720;
+		params->pitch		= 1280 * 2;
+		params->offset_x	= 32;
+		params->offset_y	= 30;
+		params->stream_flags	= VIP_HD;
+		break;
 
-		case 5:  /* 1920x1080i60 */
-		case 20: /* 1920x1080i50 */
-			params->bits		= 16;
-			params->samples		= 1920;
-			params->lines		= 1080;
-			params->pitch		= 1920 * 2;
-			params->offset_x	= 0;
-			params->offset_y	= 20;
-			params->stream_flags	= VIP_ODD_FIELD
-						| VIP_EVEN_FIELD
-						| VIP_INTERLACED
-						| VIP_HD
-						| VIP_NO_SCALER;
-			break;
+	case 5:  /* 1920x1080i60 */
+	case 20: /* 1920x1080i50 */
+		params->bits		= 16;
+		params->samples		= 1920;
+		params->lines		= 1080;
+		params->pitch		= 1920 * 2;
+		params->offset_x	= 0;
+		params->offset_y	= 20;
+		params->stream_flags	= VIP_ODD_FIELD
+					| VIP_EVEN_FIELD
+					| VIP_INTERLACED
+					| VIP_HD
+					| VIP_NO_SCALER;
+		break;
 
-		case 32: /* 1920x1080p24 */
-		case 33: /* 1920x1080p25 */
-		case 34: /* 1920x1080p30 */
-			params->bits		= 16;
-			params->samples		= 1920;
-			params->lines		= 1080;
-			params->pitch		= 1920 * 2;
-			params->offset_x	= 0;
-			params->offset_y	= 0;
-			params->stream_flags	= VIP_HD;
-			break;
+	case 32: /* 1920x1080p24 */
+	case 33: /* 1920x1080p25 */
+	case 34: /* 1920x1080p30 */
+		params->bits		= 16;
+		params->samples		= 1920;
+		params->lines		= 1080;
+		params->pitch		= 1920 * 2;
+		params->offset_x	= 0;
+		params->offset_y	= 0;
+		params->stream_flags	= VIP_HD;
+		break;
 
-		default:
-			return -1;
+	default:
+		return -1;
 	}
 	return 0;
 }
@@ -839,8 +836,7 @@ static ssize_t dvb_video_write(struct file *file, const char __user *buf,
 	    (ringbuffer_avail > TSOUT_LEVEL_FILL)) {
 		sti7109->tsout_stat = TSOUT_STAT_RUN;
 		SAA716x_EPWR(PHI_1, FPGA_ADDR_FIFO_CTRL, FPGA_FIFO_CTRL_IE | FPGA_FIFO_CTRL_RUN);
-	}
-	else if ((sti7109->tsout_stat == TSOUT_STAT_WAIT) &&
+	} else if ((sti7109->tsout_stat == TSOUT_STAT_WAIT) &&
 		 (ringbuffer_avail > TSOUT_LEVEL_HIGH)) {
 		sti7109->tsout_stat = TSOUT_STAT_RUN;
 		queue_work(sti7109->fifo_workq, &sti7109->fifo_work);
