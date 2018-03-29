@@ -120,7 +120,8 @@ static u32 saa716x_init_ptables(struct saa716x_dmabuf *dmabuf, int channel,
 	    (stream_params->stream_flags & FGPI_ODD_FIELD) &&
 	    (stream_params->stream_flags & FGPI_EVEN_FIELD)) {
 		/* In interlaced mode the same buffer is written twice, once
-		   the odd field and once the even field */
+		 * the odd field and once the even field
+		 */
 		SAA716x_EPWR(MMU, MMU_PTA0_LSB(channel), PTA_LSB(dmabuf[0].mem_ptab_phys)); /* Low */
 		SAA716x_EPWR(MMU, MMU_PTA0_MSB(channel), PTA_MSB(dmabuf[0].mem_ptab_phys)); /* High */
 		SAA716x_EPWR(MMU, MMU_PTA1_LSB(channel), PTA_LSB(dmabuf[0].mem_ptab_phys)); /* Low */

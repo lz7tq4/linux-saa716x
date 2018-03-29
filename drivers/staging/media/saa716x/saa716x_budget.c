@@ -591,8 +591,9 @@ static int skystar2_express_hd_frontend_attach(struct saa716x_adapter *adapter,
 			skystar2_stv090x_config.tuner_get_status    = ctl->tuner_get_status;
 
 			/* call the init function once to initialize
-			   tuner's clock output divider and demod's
-			   master clock */
+			 * tuner's clock output divider and demod's
+			 * master clock
+			 */
 			if (adapter->fe->ops.init)
 				adapter->fe->ops.init(adapter->fe);
 		} else {

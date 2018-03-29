@@ -236,10 +236,10 @@ static int saa716x_i2c_hwinit(struct saa716x_i2c *i2c, u32 I2C_DEV)
 
 	if (i2c->i2c_mode >= SAA716x_I2C_MODE_IRQ) {
 		/* Enabled interrupts:
-		* Master Transaction Done,
-		* Master Transaction Data Request
-		* (0x81)
-		*/
+		 * Master Transaction Done,
+		 * Master Transaction Data Request
+		 * (0x81)
+		 */
 		msleep(5);
 
 		SAA716x_EPWR(I2C_DEV, INT_SET_ENABLE,

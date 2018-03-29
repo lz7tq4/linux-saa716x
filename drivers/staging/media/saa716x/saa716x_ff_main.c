@@ -719,7 +719,8 @@ static ssize_t video_vip_read(struct sti7109_dev *sti7109,
 
 	saa716x_vip_start(saa716x, 0, one_shot, stream_params);
 	/* Sleep long enough to be sure to capture at least one frame.
-	   TODO: Change this in a way that it just waits the required time. */
+	 * TODO: Change this in a way that it just waits the required time.
+	 */
 	msleep(100);
 	saa716x_vip_stop(saa716x, 0);
 
@@ -1776,10 +1777,12 @@ static int saa716x_s26400_frontend_attach(struct saa716x_adapter *adapter, int c
 
 			if (count == 1) {
 				/* call the init function once to initialize
-				   tuner's clock output divider and demod's
-				   master clock */
-				/* The second tuner drives the STV0900 so
-				   call it only for adapter 1 */
+				 * tuner's clock output divider and demod's
+				 * master clock
+				 *
+				 * The second tuner drives the STV0900 so
+				 * call it only for adapter 1
+				 */
 				if (adapter->fe->ops.init)
 					adapter->fe->ops.init(adapter->fe);
 			}
@@ -1822,7 +1825,7 @@ static struct saa716x_config saa716x_s26400_config = {
 
 static struct pci_device_id saa716x_ff_pci_table[] = {
 
-	MAKE_ENTRY(TECHNOTREND, S2_6400_DUAL_S2_PREMIUM_DEVEL, SAA7160, &saa716x_s26400_config),  /* S2 6400 Dual development version */
+	MAKE_ENTRY(TECHNOTREND, S2_6400_DUAL_S2_PREMIUM_DEVEL, SAA7160, &saa716x_s26400_config), /* S2 6400 Dual development version */
 	MAKE_ENTRY(TECHNOTREND, S2_6400_DUAL_S2_PREMIUM_PROD, SAA7160, &saa716x_s26400_config), /* S2 6400 Dual production version */
 	{ }
 };

@@ -72,7 +72,8 @@ int saa716x_ff_phi_init(struct saa716x_dev *saa716x)
 	SAA716x_EPWR(PHI_0, PHI_TIMEOUT, 0x2a);
 
 	/* start with PHI settings that should work on all versions of the FPGA
-	   firmware */
+	 * firmware
+	 */
 	if (phi_mode) {
 		/* fast PHI clock */
 		saa716x_set_clk(saa716x, CLK_DOMAIN_PHI, PLL_FREQ);
@@ -88,7 +89,8 @@ int saa716x_ff_phi_init(struct saa716x_dev *saa716x)
 	}
 
 	/* for the actual access use PHI mode 0 until saa716x_ff_phi_config
-	   gets called */
+	 * gets called
+	 */
 	sti7109->phi_mode = 0;
 
 	return 0;
