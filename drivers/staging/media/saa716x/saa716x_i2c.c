@@ -248,7 +248,6 @@ static int saa716x_i2c_hwinit(struct saa716x_i2c *i2c, u32 I2C_DEV)
 		/* Check interrupt enable status */
 		reg = SAA716x_EPRD(I2C_DEV, INT_ENABLE);
 		if (reg != 0x81) {
-
 			dprintk(SAA716x_ERROR, 1,
 				"Adapter (%d) %s Interrupt enable failed, Exiting !",
 				i,
@@ -262,7 +261,6 @@ static int saa716x_i2c_hwinit(struct saa716x_i2c *i2c, u32 I2C_DEV)
 	/* Check status */
 	reg = SAA716x_EPRD(I2C_DEV, I2C_STATUS);
 	if (!(reg & 0xd)) {
-
 		dprintk(SAA716x_ERROR, 1,
 			"Adapter (%02x) %s has bad state, Exiting !",
 			I2C_DEV,
@@ -427,7 +425,7 @@ static int saa716x_i2c_write_msg(struct saa716x_i2c *i2c, u32 I2C_DEV,
 	data = I2C_START_BIT | (addr << 1);
 	dprintk(SAA716x_DEBUG, 1, "length=%d Addr:0x%02x", len, data);
 	err = saa716x_i2c_send(i2c, I2C_DEV, data);
-	if (err < 0) {
+	if (err < 0) {saa716x_i2c.c
 		dprintk(SAA716x_ERROR, 1, "Address write failed");
 		goto exit;
 	}
@@ -639,7 +637,6 @@ int saa716x_i2c_init(struct saa716x_dev *saa716x)
 		saa716x->pdev->device);
 
 	for (i = 0; i < SAA716x_I2C_ADAPTERS; i++) {
-
 		mutex_init(&i2c->i2c_lock);
 
 		init_waitqueue_head(&i2c->i2c_wq);
@@ -656,7 +653,6 @@ int saa716x_i2c_init(struct saa716x_dev *saa716x)
 			i2c->block_size = 1;
 
 		if (adapter != NULL) {
-
 			i2c_set_adapdata(adapter, i2c);
 
 			strcpy(adapter->name, SAA716x_I2C_ADAPTER(i));
@@ -707,7 +703,6 @@ void saa716x_i2c_exit(struct saa716x_dev *saa716x)
 	dprintk(SAA716x_DEBUG, 1, "Removing SAA%02x I2C Core", saa716x->pdev->device);
 
 	for (i = 0; i < SAA716x_I2C_ADAPTERS; i++) {
-
 		adapter = &i2c->i2c_adapter;
 #if 0
 		saa716x_remove_irqvector(saa716x, i2c_vec[i].vector);

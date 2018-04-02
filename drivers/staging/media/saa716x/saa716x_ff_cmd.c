@@ -10,7 +10,6 @@
 #include "saa716x_ff_cmd.h"
 #include "saa716x_ff_phi.h"
 
-
 int sti7109_cmd_init(struct sti7109_dev *sti7109)
 {
 	mutex_init(&sti7109->cmd_lock);

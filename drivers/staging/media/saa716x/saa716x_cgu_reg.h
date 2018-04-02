@@ -38,7 +38,6 @@
 #define CGU_FS1_13			0x06c
 #define CGU_FS1_PLL			(0x00000000 <<  0)
 
-
 #define CGU_FS2_0			0x070
 #define CGU_FS2_1			0x074
 #define CGU_FS2_2			0x078
@@ -98,7 +97,6 @@
 #define CGU_PCR_WAKE_EN			(0x00000001 <<  2)
 #define CGU_PCR_AUTO			(0x00000001 <<  1)
 #define CGU_PCR_RUN			(0x00000001 <<  0)
-
 
 #define CGU_PSR_0_0			0x148
 #define CGU_PSR_0_1			0x14c

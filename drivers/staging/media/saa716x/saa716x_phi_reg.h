@@ -90,5 +90,4 @@
 #define PHI_1_7_RW_0			0x70000
 #define PHI_1_7_RW_16383		0x7fffc
 
-
 #endif /* __SAA716x_PHI_REG_H */

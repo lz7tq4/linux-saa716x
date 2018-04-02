@@ -304,7 +304,6 @@ int saa716x_set_clk_external(struct saa716x_dev *saa716x, u32 port)
 		dprintk(SAA716x_ERROR, 1, "Unknown port <%02x>", port);
 		delay = 0;
 		break;
-
 	}
 
 	if (delay)
@@ -361,7 +360,6 @@ int saa716x_set_clk(struct saa716x_dev *saa716x,
 	u32 M = 1, N = 1, reset, i;
 	s8 N_tmp, M_tmp, sub, add, lsb;
 
-
 	if (cgu->clk_freq_min > frequency)
 		frequency = cgu->clk_freq_min;
 
@@ -390,38 +388,32 @@ int saa716x_set_clk(struct saa716x_dev *saa716x,
 
 		if (frequency == cgu->clk_vi_0[1]) {
 			return 0;
-
 		} else if (frequency == cgu->clk_vi_0[0]) {
 			cgu->clk_vi_0[1] = frequency; /* store */
 
 			if (frequency == cgu->clk_vi_0[2])
 				return 0;
-
 		} else {
 			cgu->clk_vi_0[1] = frequency;
 
 			if (frequency != cgu->clk_vi_0[2])
 				return 0;
-
 		}
 		break;
 
 	case CLK_DOMAIN_VI1:
 		if (frequency == cgu->clk_vi_1[1]) {
 			return 0;
-
 		} else if (frequency == cgu->clk_vi_1[0]) {
 			cgu->clk_vi_1[1] = frequency; /* store */
 
 			if (frequency == cgu->clk_vi_1[2])
 				return 0;
-
 		} else {
 			cgu->clk_vi_1[1] = frequency;
 
 			if (frequency != cgu->clk_vi_1[2])
 				return 0;
-
 		}
 		break;
 
@@ -434,13 +426,11 @@ int saa716x_set_clk(struct saa716x_dev *saa716x,
 
 			if (frequency == cgu->clk_vi_0[1])
 				return 0;
-
 		} else {
 			cgu->clk_vi_0[2] = frequency; /* store */
 
 			if (frequency != cgu->clk_vi_0[1])
 				return 0;
-
 		}
 		domain = CLK_DOMAIN_VI0; /* change domain */
 		break;
@@ -454,13 +444,11 @@ int saa716x_set_clk(struct saa716x_dev *saa716x,
 
 			if (frequency == cgu->clk_vi_1[1])
 				return 0;
-
 		} else {
 			cgu->clk_vi_1[2] = frequency; /* store */
 
 			if (frequency != cgu->clk_vi_1[1])
 				return 0;
-
 		}
 		domain = CLK_DOMAIN_VI1; /* change domain */
 		break;

@@ -34,7 +34,6 @@
 #define BAM_VI0_2_ADDR_OFFST_6		0x064
 #define BAM_VI0_2_ADDR_OFFST_7		0x068
 
-
 #define BAM_VI1_0_DMA_BUF_MODE		0x06c
 #define BAM_VI1_0_ADDR_OFFST_0		0x070
 #define BAM_VI1_0_ADDR_OFFST_1		0x074
@@ -64,7 +63,6 @@
 #define BAM_VI1_2_ADDR_OFFST_5		0x0cc
 #define BAM_VI1_2_ADDR_OFFST_6		0x0d0
 #define BAM_VI1_2_ADDR_OFFST_7		0x0d4
-
 
 #define BAM_FGPI0_DMA_BUF_MODE		0x0d8
 #define BAM_FGPI0_ADDR_OFFST_0		0x0dc
@@ -106,7 +104,6 @@
 #define BAM_FGPI3_ADDR_OFFST_6		0x160
 #define BAM_FGPI3_ADDR_OFFST_7		0x164
 
-
 #define BAM_AI0_DMA_BUF_MODE		0x168
 #define BAM_AI0_ADDR_OFFST_0		0x16c
 #define BAM_AI0_ADDR_OFFST_1		0x170
@@ -129,10 +126,6 @@
 
 #define BAM_SW_RST			0xff0
 #define BAM_SW_RESET			(0x00000001 <<  0)
-
-
-
-
 
 /* -------------- MMU Registers -------------- */
 

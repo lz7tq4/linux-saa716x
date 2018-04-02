@@ -5,7 +5,6 @@
 #include "saa716x_phi.h"
 #include "saa716x_priv.h"
 
-
 int saa716x_phi_init(struct saa716x_dev *saa716x)
 {
 	int i;

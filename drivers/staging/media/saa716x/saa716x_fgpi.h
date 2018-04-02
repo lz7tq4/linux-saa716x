@@ -5,7 +5,6 @@
 
 #define FGPI_BUFFERS		8
 
-
 /*
  * Port supported streams
  *

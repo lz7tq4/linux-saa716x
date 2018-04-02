@@ -1426,7 +1426,6 @@ static irqreturn_t saa716x_ff_pci_irq(int irq, void *dev_id)
 	}
 
 	if (msiStatusH & MSI_INT_EXTINT_0) {
-
 		phiISR = SAA716x_EPRD(PHI_1, FPGA_ADDR_EMI_ISR);
 		//dprintk(SAA716x_INFO, 1, "interrupt status register: %08X", phiISR);
 
@@ -1439,7 +1438,6 @@ static irqreturn_t saa716x_ff_pci_irq(int irq, void *dev_id)
 		}
 
 		if (phiISR & ISR_CMD_MASK) {
-
 			u32 value;
 			u32 length;
 			/*dprintk(SAA716x_INFO, 1, "CMD interrupt source");*/
@@ -1473,7 +1471,6 @@ static irqreturn_t saa716x_ff_pci_irq(int irq, void *dev_id)
 		}
 
 		if (phiISR & ISR_OSD_CMD_MASK) {
-
 			u32 value;
 			u32 length;
 			/*dprintk(SAA716x_INFO, 1, "OSD CMD interrupt source");*/
@@ -1739,7 +1736,6 @@ static struct isl6423_config tt6400_isl6423_config[2] = {
 	}
 };
 
-
 static int saa716x_s26400_frontend_attach(struct saa716x_adapter *adapter, int count)
 {
 	struct saa716x_dev *saa716x	= adapter->saa716x;
@@ -1821,9 +1817,7 @@ static struct saa716x_config saa716x_s26400_config = {
 	}
 };
 
-
 static struct pci_device_id saa716x_ff_pci_table[] = {
-
 	MAKE_ENTRY(TECHNOTREND, S2_6400_DUAL_S2_PREMIUM_DEVEL, SAA7160, &saa716x_s26400_config), /* S2 6400 Dual development version */
 	MAKE_ENTRY(TECHNOTREND, S2_6400_DUAL_S2_PREMIUM_PROD, SAA7160, &saa716x_s26400_config), /* S2 6400 Dual production version */
 	{ }

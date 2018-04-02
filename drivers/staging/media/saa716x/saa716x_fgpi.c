@@ -182,7 +182,6 @@ int saa716x_fgpi_setparams(struct saa716x_dmabuf *dmabuf,
 	SAA716x_EPWR(BAM, buf_mode, 0x00000040);
 	saa716x_init_ptables(dmabuf, dma_channel, stream_params);
 
-
 	/* monitor BAM reset */
 	val = SAA716x_EPRD(BAM, buf_mode);
 	while (val && (i < 100)) {
@@ -239,7 +238,6 @@ int saa716x_fgpi_setparams(struct saa716x_dmabuf *dmabuf,
 		if ((stream_params->stream_flags & FGPI_INTERLACED) &&
 		    (stream_params->stream_flags & FGPI_ODD_FIELD) &&
 		    (stream_params->stream_flags & FGPI_EVEN_FIELD)) {
-
 			SAA716x_EPWR(fgpi_port, FGPI_SIZE, stream_params->lines / 2);
 			SAA716x_EPWR(fgpi_port, FGPI_STRIDE, stream_params->pitch * 2); /* interlaced stride of 2 lines */
 

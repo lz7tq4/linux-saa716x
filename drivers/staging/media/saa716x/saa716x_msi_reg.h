@@ -139,5 +139,4 @@
 
 #define MSI_MODULE_ID			0xffc
 
-
 #endif /* __SAA716x_MSI_REG_H */

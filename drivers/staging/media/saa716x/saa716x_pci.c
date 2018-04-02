@@ -81,7 +81,6 @@ static void saa716x_free_irq(struct saa716x_dev *saa716x)
 	free_irq(pdev->irq, saa716x);
 	if (saa716x->int_type == MODE_MSI)
 		pci_disable_msi(pdev);
-
 }
 
 int saa716x_pci_init(struct saa716x_dev *saa716x)
@@ -127,7 +126,6 @@ int saa716x_pci_init(struct saa716x_dev *saa716x)
 	if (!request_mem_region(pci_resource_start(pdev, 0),
 				pci_resource_len(pdev, 0),
 				DRIVER_NAME)) {
-
 		dprintk(SAA716x_ERROR, 1, "BAR0 Request failed");
 		ret = -ENODEV;
 		goto fail1;

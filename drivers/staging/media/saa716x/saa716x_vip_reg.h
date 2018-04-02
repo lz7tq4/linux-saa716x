@@ -137,5 +137,4 @@
 
 #define VI_MODULE_ID			0xffc
 
-
 #endif /* __SAA716x_VIP_REG_H */

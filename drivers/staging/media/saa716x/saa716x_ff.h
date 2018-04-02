@@ -108,7 +108,6 @@
 #define VIDEO_CAPTURE_OFF	0
 #define VIDEO_CAPTURE_ONE_SHOT	1
 
-
 /* place to store all the necessary device information */
 struct sti7109_dev {
 	struct saa716x_dev	*dev;

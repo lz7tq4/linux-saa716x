@@ -62,7 +62,6 @@
 #define SAA716x_TC6		0x006
 #define SAA716x_TC7		0x007
 
-
 enum saa716x_edge {
 	SAA716x_EDGE_RISING	= 1,
 	SAA716x_EDGE_FALLING	= 2,

@@ -52,5 +52,4 @@
 #define DCSC_INT_SET_TOUT		(0x00000001 <<  1)
 #define DCSC_INT_SET_ERROR		(0x00000001 <<  0)
 
-
 #endif /* __SAA716x_DCS_REG_H */

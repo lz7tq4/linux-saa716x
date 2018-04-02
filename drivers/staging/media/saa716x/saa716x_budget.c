@@ -209,7 +209,7 @@ static irqreturn_t saa716x_budget_pci_irq(int irq, void *dev_id)
 		SAA716x_EPRD(DCS, DCSC_INT_STATUS),
 		SAA716x_EPRD(DCS, DCSC_INT_ENABLE));
 #endif
-
+saa716x_budget.c
 	if (stat_l) {
 		if (stat_l & MSI_INT_TAGACK_FGPI_0)
 			tasklet_schedule(&saa716x->fgpi[0].tasklet);
@@ -275,7 +275,6 @@ static void demux_worker(unsigned long data)
 	} while (write_index != fgpi_entry->read_index);
 }
 
-
 #define SAA716x_MODEL_TWINHAN_VP3071	"Twinhan/Azurewave VP-3071"
 #define SAA716x_DEV_TWINHAN_VP3071	"2x DVB-T"
 
@@ -297,7 +296,6 @@ static struct saa716x_config saa716x_vp3071_config = {
 	.irq_handler		= saa716x_budget_pci_irq,
 	.i2c_rate		= SAA716x_I2C_RATE_100,
 };
-
 
 #define SAA716x_MODEL_TWINHAN_VP1028	"Twinhan/Azurewave VP-1028"
 #define SAA716x_DEV_TWINHAN_VP1028	"DVB-S"
@@ -335,7 +333,6 @@ static int saa716x_vp1028_frontend_attach(struct saa716x_adapter *adapter, int c
 	struct saa716x_i2c *i2c = &saa716x->i2c[1];
 
 	if (count == 0) {
-
 		mutex_lock(&saa716x->adap_lock);
 
 		dprintk(SAA716x_DEBUG, 1, "Adapter (%d) Power ON", count);
@@ -389,7 +386,6 @@ static struct saa716x_config saa716x_vp1028_config = {
 	.i2c_rate		= SAA716x_I2C_RATE_100,
 };
 
-
 #define SAA716x_MODEL_TWINHAN_VP6002	"Twinhan/Azurewave VP-6002"
 #define SAA716x_DEV_TWINHAN_VP6002	"DVB-S"
 
@@ -413,7 +409,6 @@ static struct saa716x_config saa716x_vp6002_config = {
 	.i2c_rate		= SAA716x_I2C_RATE_100,
 };
 
-
 #define SAA716x_MODEL_KNC1_DUALS2	"KNC One Dual S2"
 #define SAA716x_DEV_KNC1_DUALS2		"1xDVB-S + 1xDVB-S/S2"
 
@@ -436,7 +431,6 @@ static struct saa716x_config saa716x_knc1_duals2_config = {
 	.irq_handler		= saa716x_budget_pci_irq,
 	.i2c_rate		= SAA716x_I2C_RATE_100,
 };
-
 
 #define SAA716x_MODEL_SKYSTAR2_EXPRESS_HD	"SkyStar 2 eXpress HD"
 #define SAA716x_DEV_SKYSTAR2_EXPRESS_HD		"DVB-S/S2"
@@ -624,9 +618,7 @@ static struct saa716x_config skystar2_express_hd_config = {
 	}
 };
 
-
 static struct pci_device_id saa716x_budget_pci_table[] = {
-
 	MAKE_ENTRY(TWINHAN_TECHNOLOGIES, TWINHAN_VP_1028, SAA7160, &saa716x_vp1028_config), /* VP-1028 */
 	MAKE_ENTRY(TWINHAN_TECHNOLOGIES, TWINHAN_VP_3071, SAA7160, &saa716x_vp3071_config), /* VP-3071 */
 	MAKE_ENTRY(TWINHAN_TECHNOLOGIES, TWINHAN_VP_6002, SAA7160, &saa716x_vp6002_config), /* VP-6002 */

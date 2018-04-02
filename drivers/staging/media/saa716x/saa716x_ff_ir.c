@@ -27,7 +27,6 @@
 #include "saa716x_priv.h"
 #include "saa716x_ff.h"
 
-
 /* infrared remote control */
 struct infrared {
 	u16			key_map[128];
@@ -46,7 +45,6 @@ struct infrared {
 #define IR_RC5		0
 #define UP_TIMEOUT	(HZ*7/25)
 
-
 /* key-up timer */
 static void ir_emit_keyup(unsigned long parm)
 {
@@ -58,7 +56,6 @@ static void ir_emit_keyup(unsigned long parm)
 	input_report_key(ir->input_dev, ir->last_key, 0);
 	input_sync(ir->input_dev);
 }
-
 
 /* tasklet */
 static void ir_emit_key(unsigned long parm)
@@ -136,9 +133,7 @@ static void ir_emit_key(unsigned long parm)
 
 	ir->keyup_timer.expires = jiffies + UP_TIMEOUT;
 	add_timer(&ir->keyup_timer);
-
 }
-
 
 /* register with input layer */
 static void ir_register_keys(struct infrared *ir)
@@ -166,7 +161,6 @@ static void ir_register_keys(struct infrared *ir)
 	ir->input_dev->keycodemax = ARRAY_SIZE(ir->key_map);
 }
 
-
 /* called by the input driver after rep[REP_DELAY] ms */
 static void ir_repeat_key(unsigned long parm)
 {
@@ -174,7 +168,6 @@ static void ir_repeat_key(unsigned long parm)
 
 	ir->delay_timer_finished = true;
 }
-
 
 /* interrupt handler */
 void saa716x_ir_handler(struct saa716x_dev *saa716x, u32 ir_cmd)
@@ -187,7 +180,6 @@ void saa716x_ir_handler(struct saa716x_dev *saa716x, u32 ir_cmd)
 	ir->command = ir_cmd;
 	tasklet_schedule(&ir->tasklet);
 }
-
 
 int saa716x_ir_init(struct saa716x_dev *saa716x)
 {
@@ -251,7 +243,6 @@ err:
 	kfree(ir);
 	return -ENOMEM;
 }
-
 
 void saa716x_ir_exit(struct saa716x_dev *saa716x)
 {

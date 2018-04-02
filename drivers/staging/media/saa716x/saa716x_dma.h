@@ -25,7 +25,6 @@
 #define BAM_ADDR_OFFSET_6(__ch)		(BAM_ADDR_OFFSET(__ch) + 0x18)
 #define BAM_ADDR_OFFSET_7(__ch)		(BAM_ADDR_OFFSET(__ch) + 0x1c)
 
-
 enum saa716x_dma_type {
 	SAA716x_DMABUF_EXT_LIN, /* Linear external */
 	SAA716x_DMABUF_EXT_SG, /* SG external */

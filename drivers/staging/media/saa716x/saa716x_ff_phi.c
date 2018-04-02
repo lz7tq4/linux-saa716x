@@ -7,13 +7,11 @@
 
 #include "saa716x_ff.h"
 
-
 unsigned int phi_mode;
 module_param(phi_mode, int, 0644);
 MODULE_PARM_DESC(phi_mode, "phi access mode: 0 - default, slow single word accesses;"
 					   " 1 - faster phi clock;"
 					   " 2 - fastest mode, use write-combining");
-
 
 /* phi config register values: chip_select mask, ready mask, strobe time, cycle time */
 #define PHI_CONFIG(__cs, __ready, __strobe, __cycle) \

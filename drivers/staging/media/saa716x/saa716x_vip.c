@@ -1,13 +1,9 @@
 #include <linux/kernel.h>
-
 #include "saa716x_mod.h"
-
 #include "saa716x_vip_reg.h"
 #include "saa716x_dma_reg.h"
 #include "saa716x_msi_reg.h"
-
 #include "saa716x_priv.h"
-
 
 static const u32 vi_ch[] = {
 	VI0,

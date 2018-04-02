@@ -23,5 +23,4 @@
 #define SPI_CLOCK_COUNTER		0x00c
 #define SPI_CLOCK			(0x00000001 <<  0)
 
-
 #endif /* __SAA716x_SPI_REG_H */

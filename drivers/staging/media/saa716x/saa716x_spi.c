@@ -159,7 +159,6 @@ static int saa716x_spi_wr(struct saa716x_dev *saa716x, const u8 *data, int lengt
 		 * But after the last command byte CS must be left active!
 		 */
 		if ((dwCommandSize > 1) && (i < dwCommandSize - 1)) {
-
 			saa716x_gpio_write(saa716x, gpio, release);
 			msleep(1); /* 500 nS minimum */
 			saa716x_gpio_write(saa716x, gpio, select);

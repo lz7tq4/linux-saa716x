@@ -141,5 +141,4 @@
 #define I2C_SET_STATUS_MAF		(0x00000001 <<  1)
 #define I2C_SET_STATIS_MTD		(0x00000001 <<  0)
 
-
 #endif /* __SAA716x_I2C_REG_H */

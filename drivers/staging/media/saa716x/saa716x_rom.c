@@ -224,7 +224,6 @@ static void saa716x_descriptor_dbg(struct saa716x_dev *saa716x,
 	for (i = 0; i < 49; i++)
 		dprintk(SAA716x_DEBUG, 0, "-");
 	dprintk(SAA716x_DEBUG, 0, "\n");
-
 }
 
 static int saa716x_decoder_info(struct saa716x_dev *saa716x,
@@ -747,7 +746,6 @@ static int saa716x_unknown_device_info(struct saa716x_dev *saa716x,
 	return 0;
 }
 
-
 static void saa716x_device_dbg(struct saa716x_dev *saa716x,
 			       u8 *buf,
 			       u32 *offset,
@@ -776,9 +774,7 @@ static void saa716x_device_dbg(struct saa716x_dev *saa716x,
 	for (i = 0; i < 53; i++)
 		dprintk(SAA716x_DEBUG, 0, "-");
 	dprintk(SAA716x_DEBUG, 0, "\n");
-
 }
-
 
 static int saa716x_device_info(struct saa716x_dev *saa716x,
 			       struct saa716x_devinfo *device,

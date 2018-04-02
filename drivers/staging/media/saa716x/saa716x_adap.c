@@ -12,11 +12,9 @@
 #include "saa716x_gpio.h"
 #include "saa716x_priv.h"
 
-
 #define SAA716X_TS_DMA_BUF_SIZE		(16 * SAA716x_PAGE_SIZE)
 
 DVB_DEFINE_MOD_OPT_ADAPTER_NR(adapter_nr);
-
 
 void saa716x_dma_start(struct saa716x_dev *saa716x, u8 adapter)
 {
@@ -95,14 +93,12 @@ int saa716x_dvb_init(struct saa716x_dev *saa716x)
 	mutex_init(&saa716x->adap_lock);
 
 	for (i = 0; i < config->adapters; i++) {
-
 		dprintk(SAA716x_DEBUG, 1, "dvb_register_adapter");
 		if (dvb_register_adapter(&saa716x_adap->dvb_adapter,
 					 "SAA716x dvb adapter",
 					 THIS_MODULE,
 					 &saa716x->pdev->dev,
 					 adapter_nr) < 0) {
-
 			dprintk(SAA716x_ERROR, 1, "Error registering adapter");
 			return -ENODEV;
 		}
@@ -135,7 +131,6 @@ int saa716x_dvb_init(struct saa716x_dev *saa716x)
 		dprintk(SAA716x_DEBUG, 1, "dvb_dmxdev_init");
 		result = dvb_dmxdev_init(&saa716x_adap->dmxdev, &saa716x_adap->dvb_adapter);
 		if (result < 0) {
-
 			dprintk(SAA716x_ERROR, 1, "dvb_dmxdev_init failed, ERROR=%d", result);
 			goto err1;
 		}
@@ -144,7 +139,6 @@ int saa716x_dvb_init(struct saa716x_dev *saa716x)
 		result = saa716x_adap->demux.dmx.add_frontend(&saa716x_adap->demux.dmx,
 							      &saa716x_adap->fe_hw)
 		if (result < 0) {
-
 			dprintk(SAA716x_ERROR, 1, "dvb_dmx_init failed, ERROR=%d", result);
 			goto err2;
 		}
@@ -199,7 +193,6 @@ int saa716x_dvb_init(struct saa716x_dev *saa716x)
 		saa716x_adap++;
 	}
 
-
 	return 0;
 
 	/* Error conditions */
@@ -226,7 +219,6 @@ void saa716x_dvb_exit(struct saa716x_dev *saa716x)
 	int i;
 
 	for (i = 0; i < saa716x->config->adapters; i++) {
-
 		saa716x_fgpi_exit(saa716x, saa716x->config->adap_config[i].ts_port);
 
 		if (saa716x_adap->fe) {

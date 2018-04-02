@@ -561,7 +561,6 @@ static int saa716x_nemo_frontend_attach(struct saa716x_adapter *adapter, int cou
 	struct saa716x_i2c *demod_i2c = &saa716x->i2c[SAA716x_I2C_BUS_B];
 	struct saa716x_i2c *tuner_i2c = &saa716x->i2c[SAA716x_I2C_BUS_A];
 
-
 	if (count  == 0) {
 		dprintk(SAA716x_DEBUG, 1, "Adapter (%d) SAA716x frontend Init", count);
 		dprintk(SAA716x_DEBUG, 1, "Adapter (%d) Device ID=%02x", count, saa716x->pdev->subsystem_device);
@@ -625,7 +624,6 @@ static struct saa716x_config saa716x_nemo_config = {
 	}
 };
 
-
 #define SAA716x_MODEL_AVERMEDIA_HC82	"Avermedia HC82 Express-54"
 #define SAA716x_DEV_AVERMEDIA_HC82	"DVB-T + Analog"
 
@@ -647,7 +645,6 @@ static int saa716x_averhc82_frontend_attach(struct saa716x_adapter *adapter, int
 	dprintk(SAA716x_DEBUG, 1, "Adapter (%d) Device ID=%02x", count, saa716x->pdev->subsystem_device);
 
 //	adapter->fe = zl10353_attach(&saa716x_averhc82_zl10353_config, &i2c->i2c_adapter);
-
 
 	return 0;
 }
@@ -686,7 +683,6 @@ static struct saa716x_config saa716x_averh788_config = {
 };
 
 static struct pci_device_id saa716x_hybrid_pci_table[] = {
-
 	MAKE_ENTRY(TWINHAN_TECHNOLOGIES, TWINHAN_VP_6090, SAA7162, &saa716x_vp6090_config),
 	MAKE_ENTRY(AVERMEDIA, AVERMEDIA_HC82, SAA7160, &saa716x_averhc82_config),
 	MAKE_ENTRY(AVERMEDIA, AVERMEDIA_H788, SAA7160, &saa716x_averh788_config),

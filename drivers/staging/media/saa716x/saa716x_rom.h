@@ -1,7 +1,6 @@
 #ifndef __SAA716x_ROM_H
 #define __SAA716x_ROM_H
 
-
 #define MSB(__x)	((__x >> 8) & 0xff)
 #define LSB(__x)	(__x & 0xff)
 

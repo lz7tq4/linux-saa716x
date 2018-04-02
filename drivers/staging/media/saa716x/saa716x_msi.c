@@ -368,7 +368,6 @@ void saa716x_msiint_disable(struct saa716x_dev *saa716x)
 }
 EXPORT_SYMBOL_GPL(saa716x_msiint_disable);
 
-
 /* Map the given vector Id to the hardware bitmask. */
 static void saa716x_map_vector(struct saa716x_dev *saa716x, int vector, u32 *mask_l, u32 *mask_h)
 {
@@ -452,7 +451,6 @@ int saa716x_remove_irqvector(struct saa716x_dev *saa716x, int vector)
 
 	/* loop through the registered handlers */
 	for (i = 0; i < saa716x->handlers; i++) {
-
 		/* we found our vector */
 		if (msix_handler->vector == vector) {
 			BUG_ON(msix_handler->handler == NULL); /* no handler yet */

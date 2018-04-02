@@ -49,7 +49,6 @@
 	}												\
 } while (0)
 
-
 #define NXP_SEMICONDUCTOR	0x1131
 #define SAA7160			0x7160
 #define SAA7161			0x7161

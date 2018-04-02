@@ -87,5 +87,4 @@
 #define GREG_SW_RST			0xff0
 #define GREG_SW_RESET			(0x00000001 <<  0)
 
-
 #endif /* __SAA716x_GREG_REG_H */

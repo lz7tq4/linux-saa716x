@@ -119,7 +119,6 @@ static int saa716x_dmabuf_sgalloc(struct saa716x_dmabuf *dmabuf, void *buf, int 
 	sg_init_table(dmabuf->sg_list, pages);
 
 	if (buf == NULL) {
-
 		/* allocate memory, unaligned */
 		dmabuf->mem_virt_noalign = vmalloc((pages + 1) * SAA716x_PAGE_SIZE);
 		if (dmabuf->mem_virt_noalign == NULL) {
@@ -185,7 +184,6 @@ static void saa716x_dmabuf_sgpagefill(struct saa716x_dmabuf *dmabuf, struct scat
 			BUG_ON(sg_cur->offset != 0);
 
 		for (j = 0; (j * SAA716x_PAGE_SIZE) < sg_dma_len(sg_cur); j++) {
-
 			if ((offset + sg_cur->offset) >= SAA716x_PAGE_SIZE) {
 				offset -= SAA716x_PAGE_SIZE;
 				continue;
@@ -211,7 +209,6 @@ static void saa716x_dmabuf_sgpagefill(struct saa716x_dmabuf *dmabuf, struct scat
 				   dmabuf->mem_ptab_phys,
 				   SAA716x_PAGE_SIZE,
 				   DMA_TO_DEVICE);
-
 }
 
 void saa716x_dmabufsync_dev(struct saa716x_dmabuf *dmabuf)
@@ -226,7 +223,6 @@ void saa716x_dmabufsync_dev(struct saa716x_dmabuf *dmabuf)
 			       dmabuf->sg_list,
 			       dmabuf->list_len,
 			       DMA_FROM_DEVICE);
-
 }
 
 void saa716x_dmabufsync_cpu(struct saa716x_dmabuf *dmabuf)
